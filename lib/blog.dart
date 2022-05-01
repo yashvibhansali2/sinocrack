@@ -4,6 +4,7 @@ import 'package:flusmic/flusmic.dart';
 import 'package:flutter/material.dart';
 import 'package:sinocrack/Navbar/Navbar.dart';
 import 'package:sinocrack/blog_details.dart';
+import 'package:sinocrack/widgets/bottom_bar.dart';
 
 class BlogScreen extends StatefulWidget {
   const BlogScreen({Key? key}) : super(key: key);
@@ -39,11 +40,37 @@ class _BlogScreenState extends State<BlogScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 61, 59, 59),
-        body: ListView(
+      backgroundColor: Color.fromARGB(255, 61, 59, 59),
+      body: Stack(children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: Image.network(
+              'https://thumbs.dreamstime.com/b/closeup-sand-pattern-beach-summer-backgrou-201616839.jpg',
+              fit: BoxFit.fill),
+        ),
+        ListView(
           children: [
             Navbar(selectedIndex: 4),
-            GridView.builder(
+            Padding(
+              padding: const EdgeInsets.only(top: 120.0, bottom: 120),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * .5,
+                height: MediaQuery.of(context).size.height * .1,
+                child: const Text(
+                  "Blogs",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 50.0,
+                      color: Colors.white),
+                ),
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 1.5,
+              padding: const EdgeInsets.all(50),
+              color: Color.fromARGB(255, 61, 59, 59),
+              child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     crossAxisSpacing: 20,
@@ -161,15 +188,20 @@ class _BlogScreenState extends State<BlogScreen> {
                             ),
                     ),
                   );
-                }),
+                },
+              ),
+            ),
+            const BottomBar()
           ],
         ),
-        floatingActionButton: FloatingActionButton.extended(
-            onPressed: () {
-              // setState(() {
-              //   showFirstContainer = !showFirstContainer;
-              // });
-            },
-            label: Text('Animate')));
+      ]),
+      // floatingActionButton: FloatingActionButton.extended(
+      //     onPressed: () {
+      //       // setState(() {
+      //       //   showFirstContainer = !showFirstContainer;
+      //       // });
+      //     },
+      //     label: Text('Animate')),
+    );
   }
 }

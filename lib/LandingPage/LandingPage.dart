@@ -7,34 +7,14 @@ class LandingPage extends StatelessWidget {
     {'icon': Icons.vibration, 'text': 'No Vibration'},
     {'icon': Icons.storm_outlined, 'text': 'No Fly Rock'},
   ];
-  Widget iconContainer(int index, double height) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Icon(
-          iconData[index]['icon'],
-          size: 40,
-        ),
-        Text(
-          iconData[index]['text'],
-          style: TextStyle(fontSize: 20),
-        ),
-        Container(
-          width: index == 2 ? 0 : 1,
-          height: height,
-          color: Colors.grey,
-        ),
-      ],
-    );
-  }
 
   List<Widget> pageChildren(double width, double height) {
     return <Widget>[
-      Container(
+      SizedBox(
         width: width,
         child: Stack(
           children: [
-            Container(
+            SizedBox(
               width: width,
               height: height,
               child: Image.network(
@@ -48,7 +28,7 @@ class LandingPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Navbar(selectedIndex: 0),
+                  const Navbar(selectedIndex: 0),
                   Column(
                     children: [
                       SizedBox(
@@ -63,10 +43,10 @@ class LandingPage extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 60.0),
+                        padding: const EdgeInsets.symmetric(vertical: 60.0),
                         child: Container(
                             decoration: BoxDecoration(
-                                color: Colors.grey[600],
+                                color: Colors.grey[300],
                                 borderRadius: BorderRadius.circular(20.0)),
                             width: width * .5,
                             height: height * .12,
@@ -79,7 +59,7 @@ class LandingPage extends StatelessWidget {
                                 ),
                                 Text(
                                   iconData[0]['text'],
-                                  style: TextStyle(fontSize: 20),
+                                  style: const TextStyle(fontSize: 20),
                                 ),
                                 Container(
                                   width: 2,
@@ -92,7 +72,7 @@ class LandingPage extends StatelessWidget {
                                 ),
                                 Text(
                                   iconData[1]['text'],
-                                  style: TextStyle(fontSize: 20),
+                                  style: const TextStyle(fontSize: 20),
                                 ),
                                 Container(
                                   width: 2,
@@ -105,12 +85,12 @@ class LandingPage extends StatelessWidget {
                                 ),
                                 Text(
                                   iconData[2]['text'],
-                                  style: TextStyle(fontSize: 20),
+                                  style: const TextStyle(fontSize: 20),
                                 ),
                               ],
                             )),
                       ),
-                      RotatedBox(
+                      const RotatedBox(
                         quarterTurns: 1,
                         child: Icon(
                           Icons.arrow_forward_ios_rounded,
@@ -123,7 +103,7 @@ class LandingPage extends StatelessWidget {
                       )
                     ],
                   ),
-                  SizedBox()
+                  const SizedBox()
                 ],
               ),
             ),

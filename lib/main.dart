@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:lottie/lottie.dart';
-import 'package:sinocrack/about_us.dart';
+
+import 'package:sinocrack/aboutus.dart';
 import 'package:sinocrack/blog.dart';
 import 'package:sinocrack/blog_details.dart';
+import 'package:sinocrack/count.dart';
+import 'package:sinocrack/gallery.dart';
+import 'package:sinocrack/review_container.dart';
 
 import 'package:sinocrack/widgets/bottom_bar.dart';
 import 'package:sinocrack/widgets/featured_heading.dart';
@@ -13,6 +17,10 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:sinocrack/Navbar/Navbar.dart';
 import 'package:sinocrack/LandingPage/LandingPage.dart';
 import 'package:sinocrack/contact_us.dart';
+
+import 'benefits.dart';
+import 'how_to_use.dart/drilling&mixing.dart';
+import 'how_to_use.dart/usage_notes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,17 +50,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: const MaterialColor(0xFF6D747C, color),
       ),
-      home: MyHomePage(),
+      home: const Drilling(),
       onGenerateRoute: (route) {
         switch (route.name) {
           case MyHomePage.rouetName:
-            return MaterialPageRoute(builder: (context) => MyHomePage());
+            return MaterialPageRoute(builder: (context) => const MyHomePage());
           case BlogDetails.routeName:
             Map args = route.arguments as Map;
             return MaterialPageRoute(
                 builder: (context) => BlogDetails(args: args));
           default:
-            return MaterialPageRoute(builder: (context) => Scaffold());
+            return MaterialPageRoute(builder: (context) => const Scaffold());
         }
       },
     );
@@ -95,86 +103,143 @@ class MyHomePage extends StatelessWidget {
                   //  fit: BoxFit.fill,
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(
+                height: 400,
+                width: MediaQuery.of(context).size.width,
+                child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: 50,
+                          child: Container(
+                            width: MediaQuery.of(context).size.width / 1.2,
+                            color: Colors.white,
+                            height: 300,
+                          ),
+                        ),
+                        Positioned(
+                          right: 0,
+                          child: Container(
+                            width: MediaQuery.of(context).size.width / 3.5,
+                            color: Colors.black,
+                            height: 400,
+                          ),
+                        )
+                      ],
+                    )),
+              ),
+              const SizedBox(height: 50),
+              SizedBox(
+                height: 200,
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Count(
+                      icon: Icons.camera_alt_outlined,
+                      count: 870,
+                      title: 'Project Done',
+                    ),
+                    Count(
+                      icon: Icons.people_outline,
+                      count: 870,
+                      title: 'Project Done',
+                    ),
+                    Count(
+                      icon: Icons.video_camera_back_outlined,
+                      count: 870,
+                      title: 'Project Done',
+                    ),
+                    Count(
+                        title: 'Happy Clients',
+                        count: 2000,
+                        icon: Icons.outbond_outlined),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 50),
+              SizedBox(
+                height: 400,
+                width: MediaQuery.of(context).size.width,
+                child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: 50,
+                          right: 0,
+                          child: Container(
+                            width: MediaQuery.of(context).size.width / 1.2,
+                            color: Colors.white,
+                            height: 300,
+                          ),
+                        ),
+                        Positioned(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width / 3.5,
+                            color: Colors.black,
+                            height: 400,
+                          ),
+                        )
+                      ],
+                    )),
+              ),
+              const SizedBox(height: 80),
               Container(
-                height: MediaQuery.of(context).size.height * 0.8,
-                width: MediaQuery.of(context).size.width * 0.9,
+                //height: MediaQuery.of(context).size.height * 0.8,
+                width: MediaQuery.of(context).size.width,
                 color: Colors.white,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 80.0),
+                  padding: const EdgeInsets.only(top: 50.0),
                   child: Column(
                     children: <Widget>[
-                      const Text('Reviews from ',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold)),
-                      const SizedBox(height: 5),
-                      const Text('TRUSTPILOT',
-                          style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold)),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                              width: MediaQuery.of(context).size.width / 10,
+                              color: Colors.black,
+                              height: 2),
+                          const Text('        Testimonials        ',
+                              style: TextStyle(
+                                  fontSize: 30, fontWeight: FontWeight.bold)),
+                          Container(
+                              width: MediaQuery.of(context).size.width / 10,
+                              color: Colors.black,
+                              height: 2),
+                        ],
+                      ),
+                      const SizedBox(height: 50),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width / 1.8,
+                        child: const Text(
+                            'What our esteemed customers have to say about us and our product Sinocrack. We build long term relationships with our customer and change the way they do their business, and below is a testimonial to this.',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20,
+                            )),
+                      ),
                       const SizedBox(height: 50),
                       SizedBox(
                         height: 300,
                         child: ListView.builder(
+                          padding: EdgeInsets.zero,
                           scrollDirection: Axis.horizontal,
-                          itemCount: 6,
+                          itemCount: 3,
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
-                            return Container(
-                              margin:
-                                  const EdgeInsets.only(right: 20, left: 20),
-                              height: 100,
-                              width: 200,
-                              color: Colors.black,
-                              child: Padding(
-                                padding: const EdgeInsets.all(30.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    RatingBar.builder(
-                                      initialRating: 3,
-                                      minRating: 1,
-                                      direction: Axis.horizontal,
-                                      allowHalfRating: true,
-                                      itemSize: 20,
-                                      itemCount: 5,
-                                      itemPadding: EdgeInsets.symmetric(
-                                          horizontal: 3.0, vertical: 2.0),
-                                      itemBuilder: (context, _) => Icon(
-                                        Icons.star,
-                                        color: Colors.white,
-                                      ),
-                                      onRatingUpdate: (rating) {
-                                        print(rating);
-                                      },
-                                    ),
-                                    const SizedBox(height: 20),
-                                    const Text(
-                                      'Sino Crack',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white),
-                                    ),
-                                    const SizedBox(height: 20),
-                                    const Text(
-                                      'Sino Crack is a cracker that is used to crack android apps',
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
+                            return const ReviewContainer();
                           },
                         ),
+                      ),
+                      const SizedBox(
+                        height: 50,
                       )
                     ],
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
               const BottomBar()
             ],
           ),

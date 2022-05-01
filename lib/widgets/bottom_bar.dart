@@ -99,21 +99,21 @@ class BottomBar extends StatelessWidget {
               ),
               Column(
                 children: [
-                  ContactDetails(
+                  const ContactDetails(
                     icon: Icons.phone,
                     title: '+91-123-456-7890',
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.width * 0.02,
                   ),
-                  ContactDetails(
+                  const ContactDetails(
                     icon: Icons.mail,
                     title: 'sino@crack.com',
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.width * 0.02,
                   ),
-                  ContactDetails(
+                  const ContactDetails(
                     icon: Icons.location_on,
                     title: 'Sector-1, Noida',
                   )
